@@ -18,7 +18,7 @@ class JaccardSimilarity:
 
 
 if __name__ == "__main__":
-    lst = [['SHINGLES', 'D1', 'D2', 'D3'],
+    matrix = [['SHINGLES', 'D1', 'D2', 'D3'],
            ['This', 1, 1, 0],
            ['his_', 1, 1, 0],
            ['is_i', 1, 1, 0],
@@ -50,9 +50,13 @@ if __name__ == "__main__":
            ['it_i', 0, 0, 1],
            ['t_is', 0, 0, 1],
            ]
-    transpose_matrix = JaccardSimilarity.get_transpose_matrix(lst[1:])
+    print("Input Matrix:\n")
+    for row in matrix:
+      print(row)
+    transpose_matrix = JaccardSimilarity.get_transpose_matrix(matrix[1:])
     needed_list = [(0, 1), (0, 2), (1, 2)]
+
+    print("\nOutput:")
     for i in needed_list:
         print("jaccard similirity {D%d , D%d} = %0.2f" %
               (i[0]+1, i[1]+1, JaccardSimilarity.similarity_calc(transpose_matrix[i[0]], transpose_matrix[i[1]])))
-
